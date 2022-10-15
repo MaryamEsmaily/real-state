@@ -1,7 +1,5 @@
 import { CssBaseline, ThemeProvider, Zoom } from "@mui/material";
 import theme from "styles/theme/theme";
-// import { CacheProvider } from "@emotion/react";
-import cacheRtl from "utility/cacheRtlEmotion";
 import "../styles/globals.css";
 import {
   QueryClientProvider,
@@ -11,7 +9,6 @@ import {
 import reactQueryConfig from "config/reactQueryConfig";
 import { useState } from "react";
 import { SnackbarProvider } from "notistack";
-// import UserProvider from "provider/UserProvider";
 
 function MyApp({ Component, pageProps }) {
   const [queryClient] = useState(
