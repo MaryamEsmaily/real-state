@@ -1,8 +1,85 @@
 import React from "react";
-import { Box, Button, Container, Stack, Typography } from "@mui/material";
+import getValidationFieldProps from "utils/getValidationFieldProps";
+import { useFormik } from "formik";
+import AuthLayout from "layout/AuthLayout";
+import Link from "next/link";
+import PasswordInput from "components/PasswordInput/PasswordInput";
+import { Box, Button, Grid, TextField, Typography } from "@mui/material";
 
-function Login() {
-  return <Box display="flex" alignItems="center" justifyContent="center"></Box>;
+//
+const initialValues = {
+  phoneNo: "",
+  password: "",
+};
+//
+function LoginPage() {
+  //
+  const handleSubmit = (values) => {};
+  //
+  const formik = useFormik({
+    initialValues: initialValues,
+    onSubmit: handleSubmit,
+  });
+  //
+  return (
+    <Box borderRadius="8px" width="100%" maxWidth={400} overflow="hidden">
+      <Box
+        borderRadius="8px"
+        backgroundColor="white"
+        mx={2}
+        p={5}
+        component="form"
+        onSubmit={formik.handleSubmit}
+        textAlign="center"
+      >
+        <Typography fontSize="18px" color="primary" fontWeight="bold" mb={1}>
+          خوش آمدید
+        </Typography>
+        <Typography
+          fontSize="12px"
+          fontWeight="bold"
+          color="secondary.main"
+          mb={2}
+        >
+          برای ورود به حساب خود، اطلاعات خود را وارد کنید
+        </Typography>
+        <TextField
+          label="شماره تماس"
+          {...formik.getFieldProps("phoneNo")}
+          {...getValidationFieldProps(formik, "phoneNo")}
+        />
+        <PasswordInput
+          label="رمز عبور"
+          {...formik.getFieldProps("password")}
+          {...getValidationFieldProps(formik, "password")}
+        />
+
+        <Button
+          type="submit"
+          fullWidth
+          sx={{ mt: 2, fontWeight: "bold" }}
+          color="neutral"
+        >
+          ورود
+        </Button>
+      </Box>
+      <Box mt={3} sx={{ textAlign: "center" }}>
+        <Typography color="#A1B3D2" fontSize="12px">
+          ثبت نام نکرده اید؟
+          <Link href="/register" passHref>
+            <Typography
+              component="a"
+              color="primary.dark"
+              fontSize={12}
+              sx={{ cursor: "pointer" }}
+            >
+              کلیک کنید.
+            </Typography>
+          </Link>
+        </Typography>
+      </Box>
+    </Box>
+  );
 }
-
-export default Login;
+LoginPage.getLayout = (page) => <AuthLayout>{page}</AuthLayout>;
+export default LoginPage;
