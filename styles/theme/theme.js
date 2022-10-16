@@ -20,16 +20,21 @@ const theme = createTheme({
   palette: {
     mode: "light",
     primary: {
-      main: "#fff",
+      light: "",
+      main: "#324567",
+      dark: "#6EA0FF",
+    },
+    secondary: {
+      main: "#A1B3D2",
     },
     background: {
-      default: "#0008",
-      paper: "#fff",
+      default: "#E6EEFF",
+      paper: "#324567",
       over: "#dde2ed",
     },
     neutral: {
-      main: "#fff",
-      contrastText: "#000",
+      main: "#2662FF",
+      contrastText: "#fff",
     },
   },
   components: {
@@ -43,7 +48,7 @@ const theme = createTheme({
     MuiOutlinedInput: {
       styleOverrides: {
         root: {
-          // borderRadius: "50px",
+          borderRadius: "8px",
         },
       },
     },
@@ -58,6 +63,7 @@ const theme = createTheme({
         variant: "contained",
         disableElevation: true,
         color: "neutral",
+        borderRadius: "8px",
       },
     },
     MuiPaper: {
