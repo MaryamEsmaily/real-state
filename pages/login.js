@@ -6,10 +6,11 @@ import Link from "next/link";
 import PasswordInput from "components/PasswordInput/PasswordInput";
 import { Box, Button, Grid, TextField, Typography } from "@mui/material";
 import { useRouter } from "next/router";
+import { usePostLoginUser } from "hook/api/useApiAuth";
 
 //
 const initialValues = {
-  phoneNo: "",
+  phonNo: "",
   password: "",
 };
 //
@@ -17,7 +18,18 @@ function LoginPage() {
   //
   const { push } = useRouter();
   //
-  const handleSubmit = (values) => {};
+  const postLoginUser = usePostLoginUser();
+  //
+  const handleSubmit = (values) => {
+    postLoginUser.mutate(values, {
+      onSuccess: () => {
+        push("app/dashboard");
+      },
+      onError: (err) => {
+        console.log(err);
+      },
+    });
+  };
   //
   const formik = useFormik({
     initialValues: initialValues,
@@ -48,8 +60,8 @@ function LoginPage() {
         </Typography>
         <TextField
           label="شماره تماس"
-          {...formik.getFieldProps("phoneNo")}
-          {...getValidationFieldProps(formik, "phoneNo")}
+          {...formik.getFieldProps("phonNo")}
+          {...getValidationFieldProps(formik, "phonNo")}
         />
         <PasswordInput
           label="رمز عبور"
