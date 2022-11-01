@@ -4,7 +4,8 @@ import { useFormik } from "formik";
 import AuthLayout from "layout/AuthLayout";
 import Link from "next/link";
 import PasswordInput from "components/PasswordInput/PasswordInput";
-import { Box, Button, Grid, TextField, Typography } from "@mui/material";
+import { Box, Button, TextField, Typography } from "@mui/material";
+import { useRouter } from "next/router";
 
 //
 const initialValues = {
@@ -15,7 +16,11 @@ const initialValues = {
 //
 function RegisterPage() {
   //
-  const handleSubmit = (values) => {};
+  const { push } = useRouter();
+  //
+  const handleSubmit = (values) => {
+    push("login");
+  };
   //
   const formik = useFormik({
     initialValues: initialValues,
