@@ -6,10 +6,10 @@ import Link from "next/link";
 import PasswordInput from "components/PasswordInput/PasswordInput";
 import { Box, Button, TextField, Typography } from "@mui/material";
 import { useRouter } from "next/router";
-
+import { usePostRegisterUser } from "hook/api/useApiAuth";
 //
 const initialValues = {
-  phoneNo: "",
+  phonNo: "",
   password: "",
   username: "",
 };
@@ -18,8 +18,17 @@ function RegisterPage() {
   //
   const { push } = useRouter();
   //
+  const postRegisterUser = usePostRegisterUser();
+  //
   const handleSubmit = (values) => {
-    push("login");
+    postRegisterUser.mutate(values, {
+      onSuccess: (res) => {
+        push("login");
+      },
+      onError: (err) => {
+        console.log(err);
+      },
+    });
   };
   //
   const formik = useFormik({
@@ -51,10 +60,10 @@ function RegisterPage() {
         </Typography>
         <TextField
           label="شماره تماس"
-          {...formik.getFieldProps("phoneNo")}
-          {...getValidationFieldProps(formik, "phoneNo")}
+          {...formik.getFieldProps("phonNo")}
+          {...getValidationFieldProps(formik, "phonNo")}
         />
-        <PasswordInput
+        <TextField
           label="نام کاربری"
           {...formik.getFieldProps("username")}
           {...getValidationFieldProps(formik, "username")}
