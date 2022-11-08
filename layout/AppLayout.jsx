@@ -14,7 +14,7 @@ import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
+import Diversity2OutlinedIcon from "@mui/icons-material/Diversity2Outlined";
 import ListItemText from "@mui/material/ListItemText";
 import navMenu from "constant/navMenu";
 
@@ -86,7 +86,6 @@ const Drawer = styled(MuiDrawer, {
 }));
 
 export default function MiniDrawer({ children }) {
-  const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
   const handleDrawerOpen = () => {
@@ -100,11 +99,10 @@ export default function MiniDrawer({ children }) {
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
-      <AppBar position="fixed" open={open}>
+      <AppBar boxShadow="unset" position="fixed" open={open}>
         <Toolbar>
           <IconButton
             color="inherit"
-            aria-label="open drawer"
             onClick={handleDrawerOpen}
             edge="start"
             sx={{
@@ -112,56 +110,58 @@ export default function MiniDrawer({ children }) {
               ...(open && { display: "none" }),
             }}
           >
-            <MenuIcon />
+            <Diversity2OutlinedIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            home
+            خانه
           </Typography>
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" open={open}>
-        <DrawerHeader>
+        <DrawerHeader sx={{ justifyContent: "center" }}>
           <IconButton onClick={handleDrawerClose}>
-            {theme.direction === "rtl" ? (
-              <ChevronRightIcon />
-            ) : (
-              <ChevronLeftIcon />
-            )}
+            <Diversity2OutlinedIcon fontSize="large" />
           </IconButton>
         </DrawerHeader>
-        <Divider />
+
         <List>
-          {navMenu?.map((item, index) => (
-            <ListItem key={item?.key} disablePadding sx={{ display: "block" }}>
-              <ListItemButton
-                sx={{
-                  color: "white",
-                  minHeight: 48,
-                  justifyContent: open ? "initial" : "center",
-                  px: 2.5,
-                }}
+          {navMenu?.map((item, index) => {
+            const Icon = item.icon;
+            return (
+              <ListItem
+                key={item?.key}
+                disablePadding
+                sx={{ display: "block" }}
               >
-                <ListItemIcon
+                <ListItemButton
                   sx={{
-                    color: "#fff",
-                    minWidth: 0,
-                    mr: open ? 3 : "auto",
-                    justifyContent: "center",
+                    color: "#eff4f",
+                    minHeight: 48,
+                    justifyContent: open ? "initial" : "center",
+                    px: 2.5,
                   }}
                 >
-                  {item?.icon}
-                </ListItemIcon>
-                <ListItemText
-                  primary={item?.label}
-                  sx={{ opacity: open ? 1 : 0 }}
-                />
-              </ListItemButton>
-            </ListItem>
-          ))}
+                  <Icon
+                    sx={{
+                      color: "#eff4f",
+                      minWidth: 0,
+                      mr: open ? 3 : "auto",
+                      justifyContent: "center",
+                    }}
+                  />
+
+                  <ListItemText
+                    primary={item?.label}
+                    sx={{ opacity: open ? 1 : 0 }}
+                  />
+                </ListItemButton>
+              </ListItem>
+            );
+          })}
         </List>
-        <Divider />
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+        <DrawerHeader />
         {children}
       </Box>
     </Box>
