@@ -1,7 +1,9 @@
+import AppLayout from "layout/AppLayout";
 import React from "react";
 
-function Dashboard() {
+function DashboardPage() {
   return <div>Dashboard</div>;
 }
 
-export default Dashboard;
+DashboardPage.getLayout = (page) => <AppLayout>{page}</AppLayout>;
+export default DashboardPage;
