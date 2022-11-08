@@ -19,23 +19,6 @@ const theme = createTheme({
   },
   palette: {
     mode: "light",
-    primary: {
-      light: "",
-      main: "#fff",
-      dark: "#6EA0FF",
-    },
-    secondary: {
-      main: "#A1B3D2",
-    },
-    background: {
-      default: "#E6EEFF",
-      paper: "#fff",
-      over: "#dde2ed",
-    },
-    neutral: {
-      main: "#2662FF",
-      contrastText: "#fff",
-    },
   },
   components: {
     MuiTextField: {
@@ -62,7 +45,6 @@ const theme = createTheme({
       defaultProps: {
         variant: "contained",
         disableElevation: true,
-        color: "neutral",
         borderRadius: "8px",
       },
     },

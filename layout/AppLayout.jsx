@@ -1,5 +1,5 @@
 import * as React from "react";
-import { styled, useTheme } from "@mui/material/styles";
+import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import MuiDrawer from "@mui/material/Drawer";
 import MuiAppBar from "@mui/material/AppBar";
@@ -9,9 +9,6 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import Diversity2OutlinedIcon from "@mui/icons-material/Diversity2Outlined";
@@ -99,10 +96,13 @@ export default function MiniDrawer({ children }) {
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
-      <AppBar boxShadow="unset" position="fixed" open={open}>
+      <AppBar
+        sx={{ bgcolor: "white", boxShadow: "none" }}
+        position="fixed"
+        open={open}
+      >
         <Toolbar>
           <IconButton
-            color="inherit"
             onClick={handleDrawerOpen}
             edge="start"
             sx={{
@@ -112,10 +112,11 @@ export default function MiniDrawer({ children }) {
           >
             <Diversity2OutlinedIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
+          <Typography color="black" variant="h6" noWrap component="div">
             خانه
           </Typography>
         </Toolbar>
+        <Divider />
       </AppBar>
       <Drawer variant="permanent" open={open}>
         <DrawerHeader sx={{ justifyContent: "center" }}>
@@ -160,7 +161,7 @@ export default function MiniDrawer({ children }) {
           })}
         </List>
       </Drawer>
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+      <Box component="main" sx={{ flexGrow: 1, p: 1 }}>
         <DrawerHeader />
         {children}
       </Box>
