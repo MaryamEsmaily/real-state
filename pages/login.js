@@ -1,12 +1,12 @@
 import React from "react";
 import getValidationFieldProps from "utils/getValidationFieldProps";
 import { useFormik } from "formik";
-import AuthLayout from "layout/AuthLayout";
 import Link from "next/link";
 import PasswordInput from "components/PasswordInput/PasswordInput";
 import { Box, Button, Grid, TextField, Typography } from "@mui/material";
 import { useRouter } from "next/router";
 import { usePostLoginUser } from "hook/api/useApiAuth";
+import AuthLayout from "layout/AuthLayout";
 
 //
 const initialValues = {
