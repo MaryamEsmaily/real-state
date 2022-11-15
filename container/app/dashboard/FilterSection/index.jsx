@@ -42,9 +42,7 @@ export default function FilterSection() {
           />
         </Collapse>
       </Box>
-      <Button fullWidth size="small">
-        جستجو
-      </Button>
+      <Button size="small">جستجو</Button>
     </Stack>
   );
 }

@@ -50,12 +50,7 @@ function RegisterPage() {
         <Typography fontSize="18px" color="primary" fontWeight="bold" mb={1}>
           خوش آمدید
         </Typography>
-        <Typography
-          fontSize="12px"
-          fontWeight="bold"
-          color="secondary.main"
-          mb={2}
-        >
+        <Typography fontSize="12px" fontWeight="bold" mb={2}>
           برای ثبت نام، اطلاعات خواسته شده را وارد کنید
         </Typography>
         <TextField
@@ -74,12 +69,7 @@ function RegisterPage() {
           {...getValidationFieldProps(formik, "password")}
         />
 
-        <Button
-          type="submit"
-          fullWidth
-          sx={{ mt: 2, fontWeight: "bold" }}
-          color="neutral"
-        >
+        <Button fullWidth type="submit" sx={{ mt: 2, fontWeight: "bold" }}>
           ثبت نام
         </Button>
       </Box>
@@ -89,7 +79,7 @@ function RegisterPage() {
           <Link href="/login" passHref>
             <Typography
               component="a"
-              color="primary.dark"
+              color="primary"
               fontSize={12}
               sx={{ cursor: "pointer" }}
             >

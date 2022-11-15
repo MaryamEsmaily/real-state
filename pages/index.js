@@ -22,7 +22,7 @@ export default function Home() {
             سیستم خریداری و پیشبینی املاک
           </Typography>
         </Box>
-        <Button onClick={() => push("/login")} fullWidth>
+        <Button fullWidth onClick={() => push("/login")}>
           ورود
         </Button>
       </Stack>
