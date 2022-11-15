@@ -1,4 +1,4 @@
-import { Box, Divider, Grid } from "@mui/material";
+import { Grid } from "@mui/material";
 import AppLayout from "layout/AppLayout";
 import dynamic from "next/dynamic";
 import React from "react";
@@ -11,11 +11,10 @@ const FilterSection = dynamic(() =>
 );
 function DashboardPage() {
   return (
-    <Grid container>
+    <Grid container gap={7}>
       <Grid item xs={2}>
         <FilterSection />
       </Grid>
-      <Divider orientation="vertical" flexItem />
       <Grid item xs={9}>
         <AdvertisingSection />
       </Grid>

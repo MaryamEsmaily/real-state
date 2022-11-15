@@ -17,7 +17,13 @@ export default function FilterSection() {
   const [open, setOpen] = React.useState(false);
   //
   return (
-    <Stack height="calc(100vh - 100px)" justifyContent="space-between" mx={1}>
+    <Stack
+      height="calc(100vh - 100px)"
+      justifyContent="space-between"
+      px={1}
+      borderRight="1px solid"
+      borderColor="primary.light"
+    >
       <Box>
         <Stack
           direction="row"
