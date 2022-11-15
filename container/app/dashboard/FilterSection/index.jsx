@@ -20,7 +20,7 @@ export default function FilterSection() {
     <Stack
       height="calc(100vh - 100px)"
       justifyContent="space-between"
-      px={1}
+      p={1}
       borderRight="1px solid"
       borderColor="primary.light"
     >

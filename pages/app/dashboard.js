@@ -11,11 +11,11 @@ const FilterSection = dynamic(() =>
 );
 function DashboardPage() {
   return (
-    <Grid container gap={7}>
+    <Grid container>
       <Grid item xs={2}>
         <FilterSection />
       </Grid>
-      <Grid item xs={9}>
+      <Grid item xs={10}>
         <AdvertisingSection />
       </Grid>
     </Grid>
