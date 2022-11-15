@@ -2,7 +2,7 @@ import DashboardOutlinedIcon from "@mui/icons-material/DashboardOutlined";
 
 const navMenu = [
   {
-    pathname: "/app/dashboard",
+    pathname: "/login",
     label: "داشبورد",
     icon: DashboardOutlinedIcon,
     key: "dashboard",

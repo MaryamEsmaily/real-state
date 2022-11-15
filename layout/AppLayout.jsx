@@ -10,10 +10,10 @@ import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
 import Diversity2OutlinedIcon from "@mui/icons-material/Diversity2Outlined";
 import ListItemText from "@mui/material/ListItemText";
 import navMenu from "constant/navMenu";
+import Link from "next/link";
 
 const drawerWidth = 240;
 
@@ -124,39 +124,18 @@ export default function MiniDrawer({ children }) {
             <Diversity2OutlinedIcon fontSize="large" />
           </IconButton>
         </DrawerHeader>
-
         <List>
-          {navMenu?.map((item, index) => {
-            const Icon = item.icon;
+          {navMenu.map((menu) => {
+            const Icon = menu.icon;
             return (
-              <ListItem
-                key={item?.key}
-                disablePadding
-                sx={{ display: "block" }}
-              >
-                <ListItemButton
-                  sx={{
-                    color: "#eff4f",
-                    minHeight: 48,
-                    justifyContent: open ? "initial" : "center",
-                    px: 2.5,
-                  }}
-                >
-                  <Icon
-                    sx={{
-                      color: "#eff4f",
-                      minWidth: 0,
-                      mr: open ? 3 : "auto",
-                      justifyContent: "center",
-                    }}
-                  />
-
-                  <ListItemText
-                    primary={item?.label}
-                    sx={{ opacity: open ? 1 : 0 }}
-                  />
-                </ListItemButton>
-              </ListItem>
+              <Link key={menu.key} href={menu.pathname} passHref>
+                <ListItem component="a">
+                  <Icon fontSize="medium" sx={{ mx: 1 }} />
+                  <ListItemText sx={{ opacity: open ? 1 : 0 }}>
+                    {menu.label}
+                  </ListItemText>
+                </ListItem>
+              </Link>
             );
           })}
         </List>
