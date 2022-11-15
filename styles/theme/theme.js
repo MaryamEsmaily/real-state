@@ -19,6 +19,9 @@ const theme = createTheme({
   },
   palette: {
     mode: "light",
+    background: {
+      default: "#f0f8ff",
+    },
   },
   components: {
     MuiTextField: {
