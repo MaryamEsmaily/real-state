@@ -4,6 +4,7 @@ import Collapse from "@mui/material/Collapse";
 import {
   Button,
   Checkbox,
+  Divider,
   FormControlLabel,
   IconButton,
   Typography,
@@ -30,9 +31,10 @@ export default function FilterSection() {
           justifyContent="space-between"
           alignItems="center"
           spacing={2}
+          onClick={() => setOpen((prev) => !prev)}
         >
           <Typography>استان</Typography>
-          <IconButton onClick={() => setOpen((prev) => !prev)}>
+          <IconButton>
             {open ? (
               <KeyboardArrowUpRoundedIcon />
             ) : (
@@ -47,6 +49,38 @@ export default function FilterSection() {
             label="مازندران"
           />
         </Collapse>
+        <Divider />
+        <Stack
+          direction="row"
+          justifyContent="space-between"
+          alignItems="center"
+          spacing={2}
+          onClick={() => setOpen((prev) => !prev)}
+        >
+          <Typography>منطقه</Typography>
+          <IconButton>
+            {open ? (
+              <KeyboardArrowUpRoundedIcon />
+            ) : (
+              <KeyboardArrowDownRoundedIcon />
+            )}
+          </IconButton>
+        </Stack>
+        <Collapse in={open} collapsedSize={0}>
+          <Box>
+            <FormControlLabel
+              control={<Checkbox size="small" defaultChecked />}
+              label="شریعتی"
+            />
+          </Box>
+          <Box>
+            <FormControlLabel
+              control={<Checkbox size="small" />}
+              label="امیرکبیر"
+            />
+          </Box>
+        </Collapse>
+        <Divider />
       </Box>
       <Button size="small">جستجو</Button>
     </Stack>
