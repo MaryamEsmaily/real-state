@@ -44,6 +44,12 @@ const theme = createTheme({
         size: "small",
       },
     },
+    MuiSelect: {
+      defaultProps: {
+        size: "small",
+        fullWidth: true,
+      },
+    },
     MuiOutlinedInput: {
       styleOverrides: {
         root: {
