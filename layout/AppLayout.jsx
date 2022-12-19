@@ -1,12 +1,10 @@
 import * as React from "react";
-import { styled } from "@mui/material/styles";
+import { duration, styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import MuiDrawer from "@mui/material/Drawer";
 import MuiAppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
-import CssBaseline from "@mui/material/CssBaseline";
-import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import ListItem from "@mui/material/ListItem";
@@ -14,8 +12,14 @@ import Diversity2OutlinedIcon from "@mui/icons-material/Diversity2Outlined";
 import ListItemText from "@mui/material/ListItemText";
 import navMenu from "constant/navMenu";
 import Link from "next/link";
-
-const drawerWidth = 240;
+import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
+import { Stack } from "@mui/system";
+import NotificationsNoneRoundedIcon from "@mui/icons-material/NotificationsNoneRounded";
+import { Badge, Menu, MenuItem, Paper, Typography } from "@mui/material";
+import PermIdentityRoundedIcon from "@mui/icons-material/PermIdentityRounded";
+import ExitToAppRoundedIcon from "@mui/icons-material/ExitToAppRounded";
+//
+const drawerWidth = 200;
 
 const openedMixin = (theme) => ({
   width: drawerWidth,
@@ -92,12 +96,23 @@ export default function MiniDrawer({ children }) {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-
+  //
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const openUserMenu = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+  //
   return (
     <Box sx={{ display: "flex" }}>
-      <CssBaseline />
       <AppBar
-        sx={{ bgcolor: "white", boxShadow: "none" }}
+        sx={{
+          bgcolor: "white",
+          boxShadow: "none",
+        }}
         position="fixed"
         open={open}
       >
@@ -106,15 +121,54 @@ export default function MiniDrawer({ children }) {
             onClick={handleDrawerOpen}
             edge="start"
             sx={{
-              marginRight: 5,
-              ...(open && { display: "none" }),
+              opacity: open ? 0 : 1,
             }}
           >
             <Diversity2OutlinedIcon />
           </IconButton>
-          <Typography color="black" variant="h6" noWrap component="div">
-            خانه
-          </Typography>
+          <Stack
+            direction="row"
+            justifyContent="end"
+            width="100%"
+            alignItems="center"
+            px={4}
+          >
+            <Box>
+              <IconButton>
+                <Badge overlap="circular" variant="dot" color="error">
+                  <NotificationsNoneRoundedIcon sx={{ fontSize: 28 }} />
+                </Badge>
+              </IconButton>
+
+              <IconButton onClick={handleClick}>
+                <AccountCircleOutlinedIcon sx={{ fontSize: 28 }} />
+              </IconButton>
+            </Box>
+
+            <Menu
+              anchorOrigin={{
+                vertical: "bottom",
+              }}
+              anchorEl={anchorEl}
+              open={openUserMenu}
+              onClose={handleClose}
+              PaperProps={{
+                style: {
+                  width: "150px",
+                },
+              }}
+            >
+              <MenuItem>
+                <PermIdentityRoundedIcon size="small" sx={{ mr: 1 }} />
+                <Typography>پروفایل</Typography>
+              </MenuItem>
+              <Divider />
+              <MenuItem>
+                <ExitToAppRoundedIcon size="small" sx={{ mr: 1 }} />
+                <Typography>خروج</Typography>
+              </MenuItem>
+            </Menu>
+          </Stack>
         </Toolbar>
         <Divider />
       </AppBar>
