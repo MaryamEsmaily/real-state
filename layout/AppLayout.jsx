@@ -18,6 +18,7 @@ import NotificationsNoneRoundedIcon from "@mui/icons-material/NotificationsNoneR
 import { Badge, Menu, MenuItem, Paper, Typography } from "@mui/material";
 import PermIdentityRoundedIcon from "@mui/icons-material/PermIdentityRounded";
 import ExitToAppRoundedIcon from "@mui/icons-material/ExitToAppRounded";
+import Image from "next/image";
 //
 const drawerWidth = 200;
 
@@ -124,7 +125,13 @@ export default function MiniDrawer({ children }) {
               opacity: open ? 0 : 1,
             }}
           >
-            <Diversity2OutlinedIcon />
+            <Image
+              src="/img/logo.png"
+              width={34}
+              height={34}
+              objectFit="cover"
+              alt="logo"
+            />
           </IconButton>
           <Stack
             direction="row"
@@ -175,7 +182,13 @@ export default function MiniDrawer({ children }) {
       <Drawer variant="permanent" open={open}>
         <DrawerHeader sx={{ justifyContent: "center" }}>
           <IconButton onClick={handleDrawerClose}>
-            <Diversity2OutlinedIcon fontSize="large" />
+            <Image
+              src="/img/logo.png"
+              width={50}
+              height={50}
+              objectFit="cover"
+              alt="logo"
+            />
           </IconButton>
         </DrawerHeader>
         <List>

@@ -24,9 +24,9 @@ function PasswordInput(props) {
               edge="end"
             >
               {showPassword ? (
-                <VisibilityOffIcon fontSize="lg" />
+                <VisibilityOffIcon color="primary" fontSize="lg" />
               ) : (
-                <VisibilityIcon />
+                <VisibilityIcon color="primary" />
               )}
             </IconButton>
           </InputAdornment>
