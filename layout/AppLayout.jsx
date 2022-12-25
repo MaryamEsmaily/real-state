@@ -180,7 +180,7 @@ export default function MiniDrawer({ children }) {
                 <Typography>پروفایل</Typography>
               </MenuItem>
               <Divider />
-              <MenuItem>
+              <MenuItem onClick={() => router.push("/login")}>
                 <ExitToAppRoundedIcon size="small" sx={{ mr: 1 }} />
                 <Typography>خروج</Typography>
               </MenuItem>

@@ -2,7 +2,6 @@ import React from "react";
 import AppLayout from "layout/AppLayout";
 import {
   Box,
-  Divider,
   Grid,
   List,
   ListItem,
@@ -12,7 +11,6 @@ import {
 } from "@mui/material";
 import WarningRoundedIcon from "@mui/icons-material/WarningRounded";
 import dynamic from "next/dynamic";
-import LibraryAddOutlinedIcon from "@mui/icons-material/LibraryAddOutlined";
 //
 const AddNewAdvertise = dynamic(() =>
   import("container/app/addNewAd/AddNewAdvertise")
@@ -20,14 +18,7 @@ const AddNewAdvertise = dynamic(() =>
 //
 function AddNewAd() {
   return (
-    <Grid container p={{ xs: 2, lg: 0 }} spacing={4}>
-      <Grid item xs={12}>
-        <Stack direction="row" p={2}>
-          <LibraryAddOutlinedIcon sx={{ mr: 1 }} />
-          <Typography fontSize="20px">ثبت آگهی</Typography>
-        </Stack>
-        <Divider />
-      </Grid>
+    <Grid container p={{ xs: 2, lg: 0 }} spacing={4} mt={3}>
       <Grid item xs={12} lg={7} order={{ xs: 2, lg: 1 }}>
         <AddNewAdvertise />
       </Grid>

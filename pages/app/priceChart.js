@@ -2,7 +2,6 @@ import React from "react";
 import AppLayout from "layout/AppLayout";
 import {
   Box,
-  Divider,
   FormControl,
   Grid,
   InputLabel,
@@ -12,7 +11,6 @@ import {
   Typography,
 } from "@mui/material";
 import dynamic from "next/dynamic";
-import InsertChartOutlinedIcon from "@mui/icons-material/InsertChartOutlined";
 //
 const PredictPriceChart = dynamic(() =>
   import("container/app/priceChart/PredictPriceChart")
@@ -20,16 +18,10 @@ const PredictPriceChart = dynamic(() =>
 //
 function PriceChart() {
   return (
-    <Grid container p={{ xs: 2, lg: 0 }} spacing={3}>
-      <Grid item xs={12}>
-        <Stack direction="row" p={2}>
-          <InsertChartOutlinedIcon sx={{ mr: 1 }} />
-          <Typography fontSize="20px">نمودار پیشبینی قیمت</Typography>
-        </Stack>
-        <Divider />
-      </Grid>
+    <Grid container p={{ xs: 2, lg: 0 }} spacing={5}>
       <Grid item xs={12}>
         <Stack
+          my={2}
           direction="row"
           justifyContent="space-between"
           alignItems="center"
@@ -37,7 +29,7 @@ function PriceChart() {
           height="100%"
           borderRadius="8px"
           bgcolor="#00aeff0f"
-          p={3}
+          px={4}
         >
           <Typography>
             نمودار زیر تغییرات قیمت هر منطقه را به صورت روزانه نمایش میدهد.
