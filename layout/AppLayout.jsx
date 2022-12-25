@@ -17,6 +17,7 @@ import NotificationsNoneRoundedIcon from "@mui/icons-material/NotificationsNoneR
 import { Badge, Menu, MenuItem, Paper, Typography } from "@mui/material";
 import PermIdentityRoundedIcon from "@mui/icons-material/PermIdentityRounded";
 import ExitToAppRoundedIcon from "@mui/icons-material/ExitToAppRounded";
+import ArticleOutlinedIcon from "@mui/icons-material/ArticleOutlined";
 import Image from "next/image";
 import { useRouter } from "next/router";
 //
@@ -178,6 +179,10 @@ export default function MiniDrawer({ children }) {
               <MenuItem>
                 <PermIdentityRoundedIcon size="small" sx={{ mr: 1 }} />
                 <Typography>پروفایل</Typography>
+              </MenuItem>
+              <MenuItem>
+                <ArticleOutlinedIcon size="small" sx={{ mr: 1 }} />
+                <Typography>آگهی های من</Typography>
               </MenuItem>
               <Divider />
               <MenuItem onClick={() => router.push("/login")}>
