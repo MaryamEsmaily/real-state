@@ -8,7 +8,7 @@ import { useRouter } from "next/router";
 import { usePostLoginUser } from "hook/api/useApiAuth";
 import AuthLayout from "layout/AuthLayout";
 import Image from "next/image";
-
+import Cookies from "js-cookie";
 //
 const initialValues = {
   phonNo: "",
@@ -23,8 +23,9 @@ function LoginPage() {
   //
   const handleSubmit = (values) => {
     postLoginUser.mutate(values, {
-      onSuccess: () => {
+      onSuccess: (res) => {
         push("app/dashboard");
+        Cookies.set("TOKEN", res.id);
       },
       onError: (err) => {
         console.log(err);
