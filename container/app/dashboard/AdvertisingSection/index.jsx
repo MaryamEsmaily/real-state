@@ -1,11 +1,12 @@
 import * as React from "react";
-import ImageList from "@mui/material/ImageList";
-import ImageListItem from "@mui/material/ImageListItem";
-import ImageListItemBar from "@mui/material/ImageListItemBar";
 import Image from "next/image";
 import { Box, Grid, Typography } from "@mui/material";
+import { useGetGetPost } from "hook/api/useApiPost";
 
 export default function AdvertisingSection() {
+  //
+  const posts = useGetGetPost();
+  //
   return (
     <Box
       sx={{
@@ -16,8 +17,8 @@ export default function AdvertisingSection() {
       }}
     >
       <Grid container py={1}>
-        {itemData?.map((item, i) => (
-          <Grid item xs={12} sm={6} md={4} lg={3} key={item.img}>
+        {itemData?.map((item, index) => (
+          <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
             <Box
               textAlign="center"
               sx={{
@@ -49,33 +50,4 @@ export default function AdvertisingSection() {
   );
 }
 
-const itemData = [
-  {
-    img: "/img/image.jpeg",
-    title: "Breakfast",
-  },
-  {
-    img: "/img/image.jpeg",
-    title: "Breakfast",
-  },
-  {
-    img: "/img/image.jpeg",
-    title: "Breakfast",
-  },
-  {
-    img: "/img/image.jpeg",
-    title: "Breakfast",
-  },
-  {
-    img: "/img/image.jpeg",
-    title: "Breakfast",
-  },
-  {
-    img: "/img/image.jpeg",
-    title: "Breakfast",
-  },
-  {
-    img: "/img/image.jpeg",
-    title: "Breakfast",
-  },
-];
+const itemData = [];
