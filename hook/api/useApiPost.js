@@ -1,8 +1,17 @@
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import * as apiPost from "api/apiPost";
 
 const useGetGetPost = () => {
   return useQuery(["getGetPost"], apiPost.getGetPost);
 };
 
-export { useGetGetPost };
+const usePostCreatePost = () => {
+  const queryClient = useQueryClient();
+  return useMutation(apiPost.postCreatePost, {
+    onSuccess: () => {
+      queryClient.invalidateQueries("getGetPost");
+    },
+  });
+};
+
+export { useGetGetPost, usePostCreatePost };

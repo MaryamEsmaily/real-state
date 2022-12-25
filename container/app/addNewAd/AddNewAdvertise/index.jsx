@@ -16,8 +16,8 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { useRouter } from "next/router";
-import { usePostLoginUser } from "hook/api/useApiAuth";
+import { usePostCreatePost } from "hook/api/useApiPost";
+import { toast } from "react-toastify";
 //
 const initialValues = {
   Price: "",
@@ -29,17 +29,15 @@ const initialValues = {
 //
 function AddNewAdvertise() {
   //
-  const { push } = useRouter();
-  //
-  const postLoginUser = usePostLoginUser();
+  const postCreatePost = usePostCreatePost();
   //
   const handleSubmit = (values) => {
-    postLoginUser.mutate(values, {
+    postCreatePost.mutate(values, {
       onSuccess: () => {
-        push("app/dashboard");
+        toast.success("با موفقیت ثبت شد");
       },
       onError: (err) => {
-        console.log(err);
+        toast.error("error");
       },
     });
   };
@@ -79,6 +77,9 @@ function AddNewAdvertise() {
           sx={{
             flexGrow: 1,
             maxWidth: 450,
+            "& input": {
+              direction: "rtl",
+            },
           }}
           {...formik.getFieldProps("Price")}
           {...getValidationFieldProps(formik, "Price")}
@@ -144,7 +145,9 @@ function AddNewAdvertise() {
       <Stack direction={{ xs: "column", lg: "row" }} alignItems="center">
         <Box width={{ lg: 200 }}></Box>
         <Box flexGrow={1} width="100%" maxWidth="450px">
-          <Button fullWidth>ثبت آگهی</Button>
+          <Button fullWidth type="submit">
+            ثبت آگهی
+          </Button>
         </Box>
       </Stack>
     </Box>
