@@ -1,5 +1,5 @@
 import * as React from "react";
-import { duration, styled } from "@mui/material/styles";
+import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import MuiDrawer from "@mui/material/Drawer";
 import MuiAppBar from "@mui/material/AppBar";
@@ -8,7 +8,6 @@ import List from "@mui/material/List";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import ListItem from "@mui/material/ListItem";
-import Diversity2OutlinedIcon from "@mui/icons-material/Diversity2Outlined";
 import ListItemText from "@mui/material/ListItemText";
 import navMenu from "constant/navMenu";
 import Link from "next/link";
@@ -19,6 +18,7 @@ import { Badge, Menu, MenuItem, Paper, Typography } from "@mui/material";
 import PermIdentityRoundedIcon from "@mui/icons-material/PermIdentityRounded";
 import ExitToAppRoundedIcon from "@mui/icons-material/ExitToAppRounded";
 import Image from "next/image";
+import { useRouter } from "next/router";
 //
 const drawerWidth = 200;
 
@@ -89,7 +89,9 @@ const Drawer = styled(MuiDrawer, {
 
 export default function MiniDrawer({ children }) {
   const [open, setOpen] = React.useState(false);
-
+  //
+  const router = useRouter();
+  //
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -122,7 +124,7 @@ export default function MiniDrawer({ children }) {
             onClick={handleDrawerOpen}
             edge="start"
             sx={{
-              opacity: open ? 0 : 1,
+              display: open ? "none" : "block",
             }}
           >
             <Image
@@ -135,11 +137,19 @@ export default function MiniDrawer({ children }) {
           </IconButton>
           <Stack
             direction="row"
-            justifyContent="end"
+            justifyContent="space-between"
             width="100%"
             alignItems="center"
-            px={4}
+            px={open ? 0 : 2}
           >
+            <Box color="black">
+              <Typography fontSize="20px">
+                {
+                  navMenu.find((menu) => menu.pathname === router.pathname)
+                    ?.label
+                }
+              </Typography>
+            </Box>
             <Box>
               <IconButton>
                 <Badge overlap="circular" variant="dot" color="error">
