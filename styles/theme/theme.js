@@ -67,7 +67,7 @@ const theme = createTheme({
       defaultProps: {
         variant: "contained",
         disableElevation: true,
-        borderRadius: "8px",
+        // borderRadius: "8px",
       },
     },
     MuiPaper: {

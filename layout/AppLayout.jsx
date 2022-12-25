@@ -164,9 +164,6 @@ export default function MiniDrawer({ children }) {
             </Box>
 
             <Menu
-              anchorOrigin={{
-                vertical: "bottom",
-              }}
               anchorEl={anchorEl}
               open={openUserMenu}
               onClose={handleClose}
