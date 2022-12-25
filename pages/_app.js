@@ -13,6 +13,8 @@ import rtlPlugin from "stylis-plugin-rtl";
 import { CacheProvider } from "@emotion/react";
 import createCache from "@emotion/cache";
 import { prefixer } from "stylis";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function MyApp({ Component, pageProps }) {
   const [queryClient] = useState(
@@ -45,6 +47,7 @@ function MyApp({ Component, pageProps }) {
               }}
               TransitionComponent={Zoom}
             >
+              <ToastContainer position="bottom-left" />
               <CssBaseline />
               {getLayout(<Component {...pageProps} />)}
             </SnackbarProvider>
