@@ -16,7 +16,7 @@ const navMenu = [
     key: "newAdd",
   },
   {
-    pathname: "/app/chart",
+    pathname: "/app/priceChart",
     label: "نمودار قیمت",
     icon: InsertChartOutlinedIcon,
     key: "chart",
