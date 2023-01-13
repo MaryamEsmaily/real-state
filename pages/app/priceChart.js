@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import AppLayout from "layout/AppLayout";
 import {
   Box,
@@ -13,12 +13,18 @@ import {
 } from "@mui/material";
 import dynamic from "next/dynamic";
 import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
+import { useGetGetPost } from "hook/api/useApiPost";
 //
 const PredictPriceChart = dynamic(() =>
   import("container/app/priceChart/PredictPriceChart")
 );
 //
 function PriceChart() {
+  const [location, setLocation] = useState("");
+  const posts = useGetGetPost({
+    location,
+  });
+
   return (
     <Grid container p={{ xs: 2, lg: 0 }} spacing={5}>
       <Grid item xs={12}>
@@ -46,12 +52,14 @@ function PriceChart() {
                 منطقه
               </InputLabel>
               <Select
+                value={location}
+                onChange={(e) => setLocation(e.target.value)}
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
                 label="منطقه"
               >
-                <MenuItem value={1}>شریعتی</MenuItem>
-                <MenuItem value={2}>امیرکبیر</MenuItem>
+                <MenuItem value={"shariati"}>شریعتی</MenuItem>
+                <MenuItem value={"amirkabir"}>امیرکبیر</MenuItem>
               </Select>
             </FormControl>
             <IconButton>

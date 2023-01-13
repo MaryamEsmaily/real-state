@@ -22,7 +22,7 @@ import { toast } from "react-toastify";
 const initialValues = {
   Price: "",
   Location: "",
-  Image: "",
+  Image: "tr",
   Title: "",
   Description: "",
 };
@@ -99,8 +99,8 @@ function AddNewAdvertise() {
           {...formik.getFieldProps("Location")}
           {...getValidationFieldProps(formik, "Location")}
         >
-          <MenuItem value={1}>شریعتی</MenuItem>
-          <MenuItem value={2}>امیرکبیر</MenuItem>
+          <MenuItem value={"shariati"}>شریعتی</MenuItem>
+          <MenuItem value={"amirkabir"}>امیرکبیر</MenuItem>
         </Select>
       </Stack>
       <Stack direction={{ xs: "column", lg: "row" }} alignItems="center">
