@@ -5,6 +5,7 @@ import reactQueryConfig from "config/reactQueryConfig";
 const useGetGetPost = (params) => {
   return useQuery(["getGetPost", params], apiPost.getGetPost, {
     ...reactQueryConfig,
+    enabled: !!params,
   });
 };
 
