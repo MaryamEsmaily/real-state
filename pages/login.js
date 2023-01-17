@@ -11,7 +11,7 @@ import Image from "next/image";
 import Cookies from "js-cookie";
 //
 const initialValues = {
-  phonNo: "",
+  phone: "",
   password: "",
 };
 //
@@ -66,8 +66,8 @@ function LoginPage() {
         </Typography>
         <TextField
           label="شماره تماس"
-          {...formik.getFieldProps("phonNo")}
-          {...getValidationFieldProps(formik, "phonNo")}
+          {...formik.getFieldProps("phone")}
+          {...getValidationFieldProps(formik, "phone")}
         />
         <PasswordInput
           label="رمز عبور"

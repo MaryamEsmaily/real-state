@@ -24,7 +24,7 @@ function PriceChart() {
   const posts = useGetGetPost({
     location,
   });
-
+  console.log(posts);
   return (
     <Grid container p={{ xs: 2, lg: 0 }} spacing={5}>
       <Grid item xs={12}>

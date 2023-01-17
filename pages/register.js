@@ -10,7 +10,7 @@ import AuthLayout from "layout/AuthLayout";
 import Image from "next/image";
 //
 const initialValues = {
-  phonNo: "",
+  phone: "",
   password: "",
   username: "",
 };
@@ -65,8 +65,8 @@ function RegisterPage() {
         </Typography>
         <TextField
           label="شماره تماس"
-          {...formik.getFieldProps("phonNo")}
-          {...getValidationFieldProps(formik, "phonNo")}
+          {...formik.getFieldProps("phone")}
+          {...getValidationFieldProps(formik, "phone")}
         />
         <TextField
           label="نام کاربری"
