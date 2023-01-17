@@ -22,7 +22,7 @@ const PredictPriceChart = dynamic(() =>
 function PriceChart() {
   const [location, setLocation] = useState("");
   const posts = useGetGetPost({
-    location,
+    Location: location,
   });
   console.log(posts);
   return (
