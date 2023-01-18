@@ -1,3 +1,4 @@
+import axios from "axios";
 import { instance } from "config/instanceAxios";
 import { BASE_URL_ADDRESS } from "constant/baseURL";
 const BASE_URL = BASE_URL_ADDRESS;
@@ -7,6 +8,15 @@ const getGetPost = async ({ queryKey }) => {
   const { data } = await instance.get(BASE_URL + "getpost", {
     params,
   });
+  
+  const predictData = await axios.get(
+   `http://127.0.0.1:8000/location/${params.Location}`
+  );
+  return {...data,...predictData };
+};
+
+const getGetAllposts = async () => {
+  const { data } = await instance.get(BASE_URL + "getAllposts");
   return data;
 };
 
@@ -15,4 +25,4 @@ const postCreatePost = async (params) => {
   return data;
 };
 
-export { getGetPost, postCreatePost };
+export { getGetPost, postCreatePost,getGetAllposts };

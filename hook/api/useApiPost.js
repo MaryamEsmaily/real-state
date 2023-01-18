@@ -9,6 +9,12 @@ const useGetGetPost = (params) => {
   });
 };
 
+const useGetGetAllposts = () => {
+  return useQuery(["getGetAllposts"], apiPost.getGetAllposts, {
+    ...reactQueryConfig,
+  });
+};
+
 const usePostCreatePost = () => {
   const queryClient = useQueryClient();
   return useMutation(apiPost.postCreatePost, {
@@ -18,4 +24,4 @@ const usePostCreatePost = () => {
   });
 };
 
-export { useGetGetPost, usePostCreatePost };
+export { useGetGetPost, useGetGetAllposts, usePostCreatePost };
