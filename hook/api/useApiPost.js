@@ -19,7 +19,7 @@ const usePostCreatePost = () => {
   const queryClient = useQueryClient();
   return useMutation(apiPost.postCreatePost, {
     onSuccess: () => {
-      queryClient.invalidateQueries("getGetPost");
+      queryClient.invalidateQueries("getAllposts");
     },
   });
 };
