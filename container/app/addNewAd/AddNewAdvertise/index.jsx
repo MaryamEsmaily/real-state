@@ -18,11 +18,12 @@ import {
 } from "@mui/material";
 import { usePostCreatePost } from "hook/api/useApiPost";
 import { toast } from "react-toastify";
+import addNewAdvertiseSchema from "schema/addNewAdSchema";
 //
 const initialValues = {
   Price: "",
   Location: "",
-  Image: "tr",
+  Image: "Image",
   Title: "",
   Description: "",
 };
@@ -45,6 +46,7 @@ function AddNewAdvertise() {
   const formik = useFormik({
     initialValues: initialValues,
     onSubmit: handleSubmit,
+    validationSchema: addNewAdvertiseSchema,
   });
   return (
     <Box
