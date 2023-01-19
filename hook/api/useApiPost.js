@@ -9,8 +9,8 @@ const useGetGetPost = (params) => {
   });
 };
 
-const useGetGetAllposts = () => {
-  return useQuery(["getGetAllposts"], apiPost.getGetAllposts, {
+const useGetGetAllPosts = () => {
+  return useQuery(["getGetAllPosts"], apiPost.getGetAllPosts, {
     ...reactQueryConfig,
   });
 };
@@ -24,4 +24,4 @@ const usePostCreatePost = () => {
   });
 };
 
-export { useGetGetPost, useGetGetAllposts, usePostCreatePost };
+export { useGetGetPost, useGetGetAllPosts, usePostCreatePost };

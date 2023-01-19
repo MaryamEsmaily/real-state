@@ -9,17 +9,17 @@ const getGetPost = async ({ queryKey }) => {
   const { data } = await instance.get(BASE_URL + "getpost", {
     params,
   });
-  
-  const {data:predictedData} = await axios.get(
-   `http://127.0.0.1:8000/location/${params.Location}`
+
+  const { data: predictedData } = await axios.get(
+    `http://127.0.0.1:8000/location/${params.Location}`
   );
 
-  const finalData = getChartData(data,predictedData)
-  
+  const finalData = getChartData(data, predictedData);
+
   return finalData;
 };
 
-const getGetAllposts = async () => {
+const getGetAllPosts = async () => {
   const { data } = await instance.get(BASE_URL + "getAllposts");
   return data;
 };
@@ -29,4 +29,4 @@ const postCreatePost = async (params) => {
   return data;
 };
 
-export { getGetPost, postCreatePost,getGetAllposts };
+export { getGetPost, postCreatePost, getGetAllPosts };

@@ -8,6 +8,7 @@ import { useRouter } from "next/router";
 import { usePostRegisterUser } from "hook/api/useApiAuth";
 import AuthLayout from "layout/AuthLayout";
 import Image from "next/image";
+import { toast } from "react-toastify";
 //
 const initialValues = {
   phone: "",
@@ -23,11 +24,12 @@ function RegisterPage() {
   //
   const handleSubmit = (values) => {
     postRegisterUser.mutate(values, {
-      onSuccess: (res) => {
+      onSuccess: () => {
         push("login");
+        toast.success("با موفقیت انجام شد");
       },
       onError: (err) => {
-        console.log(err);
+        toast.error("خطایی رخ داده است");
       },
     });
   };

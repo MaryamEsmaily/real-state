@@ -30,8 +30,6 @@ const PredictPriceChart = ({ Location }) => {
   const { data: locationData } = useGetGetPost({
     Location,
   });
-
-  console.log(locationData)
   //
   const labels = locationData?.map((item) => item.date);
 

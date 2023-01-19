@@ -9,6 +9,7 @@ import { usePostLoginUser } from "hook/api/useApiAuth";
 import AuthLayout from "layout/AuthLayout";
 import Image from "next/image";
 import Cookies from "js-cookie";
+import { toast } from "react-toastify";
 //
 const initialValues = {
   phone: "",
@@ -26,9 +27,10 @@ function LoginPage() {
       onSuccess: (res) => {
         push("app/dashboard");
         Cookies.set("TOKEN", res.id);
+        toast.success("با موفقیت وارد شدید");
       },
-      onError: (err) => {
-        console.log(err);
+      onError: () => {
+        toast.error("خطایی رخ داده است");
       },
     });
   };

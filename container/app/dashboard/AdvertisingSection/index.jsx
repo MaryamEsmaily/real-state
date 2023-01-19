@@ -1,11 +1,11 @@
 import * as React from "react";
 import Image from "next/image";
 import { Box, Grid, Typography } from "@mui/material";
-import { useGetGetAllposts } from "hook/api/useApiPost";
+import { useGetGetAllPosts } from "hook/api/useApiPost";
 
 export default function AdvertisingSection() {
   //
-  const {data} = useGetGetAllposts();
+  const { data } = useGetGetAllPosts();
   //
   return (
     <Box
@@ -29,7 +29,7 @@ export default function AdvertisingSection() {
               }}
             >
               <Image
-                src={item.img}
+                src={"/img/default-house.jpg"}
                 alt={item.Title}
                 width={220}
                 height={220}
