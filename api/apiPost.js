@@ -1,6 +1,7 @@
 import axios from "axios";
 import { instance } from "config/instanceAxios";
 import { BASE_URL_ADDRESS } from "constant/baseURL";
+import getChartData from "utils/getChartData";
 const BASE_URL = BASE_URL_ADDRESS;
 
 const getGetPost = async ({ queryKey }) => {
@@ -9,10 +10,13 @@ const getGetPost = async ({ queryKey }) => {
     params,
   });
   
-  const predictData = await axios.get(
+  const {data:predictedData} = await axios.get(
    `http://127.0.0.1:8000/location/${params.Location}`
   );
-  return {...data,...predictData };
+
+  const finalData = getChartData(data,predictedData)
+  
+  return finalData;
 };
 
 const getGetAllposts = async () => {

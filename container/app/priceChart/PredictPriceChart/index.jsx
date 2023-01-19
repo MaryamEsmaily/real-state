@@ -12,6 +12,7 @@ import {
   Filler,
 } from "chart.js";
 import { Box } from "@mui/system";
+import { useGetGetPost } from "hook/api/useApiPost";
 
 ChartJS.register(
   CategoryScale,
@@ -24,24 +25,22 @@ ChartJS.register(
   Filler
 );
 
-const PredictPriceChart = () => {
+const PredictPriceChart = ({ Location }) => {
   //
-  const labels = [
-    "1/9/1401",
-    "2/9/1401",
-    "3/9/1401",
-    "4/9/1401",
-    "5/9/1401",
-    "5/9/1401",
-    "5/9/1401",
-  ];
+  const { data: locationData } = useGetGetPost({
+    Location,
+  });
+
+  console.log(locationData)
+  //
+  const labels = locationData?.map((item) => item.date);
 
   const data = {
     labels: labels,
     datasets: [
       {
         label: "My First Dataset",
-        data: [6500000, 8550000, 9000000, 9050000, 8900000, 9500000, 9550100],
+        data: locationData?.map((item) => item.Price),
         fill: true,
         backgroundColor: "#00aeff0f",
         borderColor: "#00aeff",

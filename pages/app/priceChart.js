@@ -13,7 +13,6 @@ import {
 } from "@mui/material";
 import dynamic from "next/dynamic";
 import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
-import { useGetGetPost } from "hook/api/useApiPost";
 //
 const PredictPriceChart = dynamic(() =>
   import("container/app/priceChart/PredictPriceChart")
@@ -21,10 +20,7 @@ const PredictPriceChart = dynamic(() =>
 //
 function PriceChart() {
   const [location, setLocation] = useState("");
-  const posts = useGetGetPost({
-    Location: location,
-  });
-  console.log(posts);
+  // 
   return (
     <Grid container p={{ xs: 2, lg: 0 }} spacing={5}>
       <Grid item xs={12}>
@@ -70,7 +66,7 @@ function PriceChart() {
       </Grid>
       <Grid item xs={12}>
         <Box px={2}>
-          <PredictPriceChart />
+          <PredictPriceChart Location={location} />
         </Box>
       </Grid>
     </Grid>
