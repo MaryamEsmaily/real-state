@@ -33,14 +33,18 @@ function AddNewAdvertise() {
   const postCreatePost = usePostCreatePost();
   //
   const handleSubmit = (values) => {
-    postCreatePost.mutate(values, {
-      onSuccess: () => {
-        toast.success("با موفقیت ثبت شد");
-      },
-      onError: (err) => {
-        toast.error("error");
-      },
-    });
+    postCreatePost.mutate(
+      { ...values, Price: +values.Price },
+      {
+        onSuccess: () => {
+          toast.success("با موفقیت ثبت شد");
+          formik.resetForm();
+        },
+        onError: (err) => {
+          toast.error("خطایی رخ داده است");
+        },
+      }
+    );
   };
   //
   const formik = useFormik({
