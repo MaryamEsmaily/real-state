@@ -40,7 +40,7 @@ function AddNewAdvertise() {
           toast.success("با موفقیت ثبت شد");
           formik.resetForm();
         },
-        onError: (err) => {
+        onError: () => {
           toast.error("خطایی رخ داده است");
         },
       }

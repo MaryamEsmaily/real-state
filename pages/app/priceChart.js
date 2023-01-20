@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import AppLayout from "layout/AppLayout";
 import {
   Box,
@@ -13,6 +13,7 @@ import {
 } from "@mui/material";
 import dynamic from "next/dynamic";
 import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
+import { useGetGetAllPosts } from "hook/api/useApiPost";
 //
 const PredictPriceChart = dynamic(() =>
   import("container/app/priceChart/PredictPriceChart")
@@ -20,7 +21,16 @@ const PredictPriceChart = dynamic(() =>
 //
 function PriceChart() {
   const [location, setLocation] = useState("");
-  // 
+  const { data } = useGetGetAllPosts();
+  //
+  const removeDuplicateValues = (arr) => {
+    return arr?.filter((item, index) => arr.indexOf(item) === index);
+  };
+  const listOfLocation = useMemo(() => {
+    const locations = data?.map((item) => item.Location);
+    return removeDuplicateValues(locations);
+  }, [data]);
+  //
   return (
     <Grid container p={{ xs: 2, lg: 0 }} spacing={5}>
       <Grid item xs={12}>
@@ -54,8 +64,9 @@ function PriceChart() {
                 id="demo-simple-select"
                 label="منطقه"
               >
-                <MenuItem value={"shariati"}>شریعتی</MenuItem>
-                <MenuItem value={"amirkabir"}>امیرکبیر</MenuItem>
+                {listOfLocation?.map( item=>
+                  <MenuItem value={item}>{item}</MenuItem>
+                )}
               </Select>
             </FormControl>
             <IconButton>
