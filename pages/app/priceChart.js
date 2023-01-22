@@ -64,9 +64,11 @@ function PriceChart() {
                 id="demo-simple-select"
                 label="منطقه"
               >
-                {listOfLocation?.map( item=>
-                  <MenuItem value={item}>{item}</MenuItem>
-                )}
+                {listOfLocation?.map((item) => (
+                  <MenuItem key={item} value={item}>
+                    {item}
+                  </MenuItem>
+                ))}
               </Select>
             </FormControl>
             <IconButton>
