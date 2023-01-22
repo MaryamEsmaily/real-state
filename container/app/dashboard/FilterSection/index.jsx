@@ -75,8 +75,13 @@ export default function FilterSection({ setArea }) {
                   label="معلم"
                 />
               </RadioGroup>
-              <Button fullWidth size="small">
-                جستجو
+              <Button
+                fullWidth
+                size="small"
+                onClick={() => setArea("")}
+                variant="outlined"
+              >
+                حذف فیلتر
               </Button>
             </Collapse>
           </Box>
@@ -137,7 +142,9 @@ export default function FilterSection({ setArea }) {
             </Collapse>
             <Divider />
           </Box>
-          <Button size="small">جستجو</Button>
+          <Button size="small" onClick={() => setArea("")} variant="outlined">
+            حذف فیلتر
+          </Button>
         </Stack>
       )}
     </>
