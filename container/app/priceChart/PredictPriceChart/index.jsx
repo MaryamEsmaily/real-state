@@ -13,6 +13,8 @@ import {
 } from "chart.js";
 import { Box } from "@mui/system";
 import { useGetGetPost } from "hook/api/useApiPost";
+import { ErrorOutline, WarningAmberRounded } from "@mui/icons-material";
+import { Stack, Typography } from "@mui/material";
 
 ChartJS.register(
   CategoryScale,
@@ -28,17 +30,17 @@ ChartJS.register(
 const PredictPriceChart = ({ Location }) => {
   //
   const { data: locationData } = useGetGetPost({
-    Location,
+    Location: Location ? Location : null,
   });
   //
-  const labels = locationData?.map((item) => item.date);
+  const labels = locationData?.map((item) => item?.date);
 
   const data = {
     labels: labels,
     datasets: [
       {
         label: "My First Dataset",
-        data: locationData?.map((item) => item.Price),
+        data: locationData?.map((item) => item?.Price),
         fill: true,
         backgroundColor: "#00aeff0f",
         borderColor: "#00aeff",
@@ -48,36 +50,51 @@ const PredictPriceChart = ({ Location }) => {
   //
   return (
     <Box height={500}>
-      <Line
-        options={{
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: {
-            legend: {
-              display: false,
-            },
-            title: {
-              display: false,
-            },
-          },
-          scales: {
-            y: {
-              grid: {
-                borderColor: "white",
-                display: true,
-              },
-              ticks: { color: "#ababab" },
-            },
-            x: {
-              grid: {
+      {locationData ? (
+        <Line
+          options={{
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: {
                 display: false,
               },
-              ticks: { color: "#ababab" },
+              title: {
+                display: false,
+              },
             },
-          },
-        }}
-        data={data}
-      />
+            scales: {
+              y: {
+                grid: {
+                  borderColor: "white",
+                  display: true,
+                },
+                ticks: { color: "#ababab" },
+              },
+              x: {
+                grid: {
+                  display: false,
+                },
+                ticks: { color: "#ababab" },
+              },
+            },
+          }}
+          data={data}
+        />
+      ) : (
+        <Stack
+          justifyContent="center"
+          direction="row"
+          alignItems="center"
+          color="red"
+          spacing={1}
+        >
+          <ErrorOutline sx={{ fontSize: "26px" }} />
+          <Typography fontSize="large">
+            داده کافی برای پیشبینی قیمت این منطقه وجود ندارد.
+          </Typography>
+        </Stack>
+      )}
     </Box>
   );
 };

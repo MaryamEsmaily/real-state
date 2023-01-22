@@ -11,7 +11,7 @@ const getGetPost = async ({ queryKey }) => {
   });
 
   const { data: predictedData } = await axios.get(
-    `http://127.0.0.1:8000/location/${params.Location}`
+    `http://127.0.0.1:8000/location/${params?.Location}`
   );
 
   const finalData = getChartData(data, predictedData);
@@ -19,9 +19,17 @@ const getGetPost = async ({ queryKey }) => {
   return finalData;
 };
 
-const getGetAllPosts = async () => {
-  const { data } = await instance.get(BASE_URL + "getAllposts");
-  return data;
+const getGetAllPosts = async ({ queryKey }) => {
+  const params = queryKey[1];
+  if (!params?.Location) {
+    const { data } = await instance.get(BASE_URL + "getAllposts");
+    return data;
+  } else {
+    const { data } = await instance.get(BASE_URL + "getpost", {
+      params,
+    });
+    return data;
+  }
 };
 
 const postCreatePost = async (params) => {

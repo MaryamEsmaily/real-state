@@ -107,6 +107,8 @@ function AddNewAdvertise() {
         >
           <MenuItem value={"shariati"}>شریعتی</MenuItem>
           <MenuItem value={"amirkabir"}>امیرکبیر</MenuItem>
+          <MenuItem value={"modares"}>مدرس</MenuItem>
+          <MenuItem value={"moalem"}>معلم</MenuItem>
         </Select>
       </Stack>
       <Stack direction={{ xs: "column", lg: "row" }} alignItems="center">

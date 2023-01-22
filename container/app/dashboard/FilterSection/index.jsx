@@ -3,10 +3,11 @@ import Box from "@mui/material/Box";
 import Collapse from "@mui/material/Collapse";
 import {
   Button,
-  Checkbox,
   Divider,
   FormControlLabel,
   IconButton,
+  Radio,
+  RadioGroup,
   Typography,
 } from "@mui/material";
 import KeyboardArrowUpRoundedIcon from "@mui/icons-material/KeyboardArrowUpRounded";
@@ -14,7 +15,7 @@ import KeyboardArrowDownRoundedIcon from "@mui/icons-material/KeyboardArrowDownR
 import { Stack } from "@mui/system";
 import useBreakpoints from "hook/useBreakpoints";
 
-export default function FilterSection() {
+export default function FilterSection({ setArea }) {
   //
   const [open, setOpen] = React.useState(false);
   //
@@ -48,59 +49,32 @@ export default function FilterSection() {
               </IconButton>
             </Stack>
             <Collapse in={open} collapsedSize={0}>
-              <Stack
-                direction="row"
-                justifyContent="space-between"
-                alignItems="center"
-                spacing={2}
-                onClick={() => setOpen((prev) => !prev)}
+              <RadioGroup
+                aria-labelledby="demo-radio-buttons-group-label"
+                name="radio-buttons-group"
+                onChange={(e) => setArea(e.target.value)}
               >
-                <Typography>استان</Typography>
-                <IconButton>
-                  {open ? (
-                    <KeyboardArrowUpRoundedIcon />
-                  ) : (
-                    <KeyboardArrowDownRoundedIcon />
-                  )}
-                </IconButton>
-              </Stack>
-              <Collapse in={open} collapsedSize={0}>
                 <FormControlLabel
-                  control={<Checkbox size="small" defaultChecked />}
-                  label="مازندران"
+                  value="shariati"
+                  control={<Radio size="small" />}
+                  label="شریعتی"
                 />
-              </Collapse>
-              <Divider />
-              <Stack
-                direction="row"
-                justifyContent="space-between"
-                alignItems="center"
-                spacing={2}
-                onClick={() => setOpen((prev) => !prev)}
-              >
-                <Typography>منطقه</Typography>
-                <IconButton>
-                  {open ? (
-                    <KeyboardArrowUpRoundedIcon />
-                  ) : (
-                    <KeyboardArrowDownRoundedIcon />
-                  )}
-                </IconButton>
-              </Stack>
-              <Collapse in={open} collapsedSize={0}>
-                <Box>
-                  <FormControlLabel
-                    control={<Checkbox size="small" defaultChecked />}
-                    label="شریعتی"
-                  />
-                </Box>
-                <Box>
-                  <FormControlLabel
-                    control={<Checkbox size="small" />}
-                    label="امیرکبیر"
-                  />
-                </Box>
-              </Collapse>
+                <FormControlLabel
+                  value="amirkabir"
+                  control={<Radio size="small" />}
+                  label="امیرکبیر"
+                />
+                <FormControlLabel
+                  value="modares"
+                  control={<Radio size="small" />}
+                  label="مدرس"
+                />
+                <FormControlLabel
+                  value="moalem"
+                  control={<Radio size="small" />}
+                  label="معلم"
+                />
+              </RadioGroup>
               <Button fullWidth size="small">
                 جستجو
               </Button>
@@ -124,29 +98,6 @@ export default function FilterSection() {
               spacing={2}
               onClick={() => setOpen((prev) => !prev)}
             >
-              <Typography>استان</Typography>
-              <IconButton>
-                {open ? (
-                  <KeyboardArrowUpRoundedIcon />
-                ) : (
-                  <KeyboardArrowDownRoundedIcon />
-                )}
-              </IconButton>
-            </Stack>
-            <Collapse in={open} collapsedSize={0}>
-              <FormControlLabel
-                control={<Checkbox size="small" defaultChecked />}
-                label="مازندران"
-              />
-            </Collapse>
-            <Divider />
-            <Stack
-              direction="row"
-              justifyContent="space-between"
-              alignItems="center"
-              spacing={2}
-              onClick={() => setOpen((prev) => !prev)}
-            >
               <Typography>منطقه</Typography>
               <IconButton>
                 {open ? (
@@ -157,18 +108,32 @@ export default function FilterSection() {
               </IconButton>
             </Stack>
             <Collapse in={open} collapsedSize={0}>
-              <Box>
+              <RadioGroup
+                aria-labelledby="demo-radio-buttons-group-label"
+                name="radio-buttons-group"
+                onChange={(e) => setArea(e.target.value)}
+              >
                 <FormControlLabel
-                  control={<Checkbox size="small" defaultChecked />}
+                  value="shariati"
+                  control={<Radio size="small" />}
                   label="شریعتی"
                 />
-              </Box>
-              <Box>
                 <FormControlLabel
-                  control={<Checkbox size="small" />}
+                  value="amirkabir"
+                  control={<Radio size="small" />}
                   label="امیرکبیر"
                 />
-              </Box>
+                <FormControlLabel
+                  value="modares"
+                  control={<Radio size="small" />}
+                  label="مدرس"
+                />
+                <FormControlLabel
+                  value="moalem"
+                  control={<Radio size="small" />}
+                  label="معلم"
+                />
+              </RadioGroup>
             </Collapse>
             <Divider />
           </Box>

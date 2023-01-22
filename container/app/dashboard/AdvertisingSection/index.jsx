@@ -3,9 +3,11 @@ import Image from "next/image";
 import { Box, Grid, Typography } from "@mui/material";
 import { useGetGetAllPosts } from "hook/api/useApiPost";
 
-export default function AdvertisingSection() {
+export default function AdvertisingSection({ area }) {
   //
-  const { data } = useGetGetAllPosts();
+  const { data } = useGetGetAllPosts({
+    Location: area,
+  });
   //
   return (
     <Box
@@ -18,7 +20,7 @@ export default function AdvertisingSection() {
     >
       <Grid container py={1}>
         {data?.map((item) => (
-          <Grid item xs={12} sm={6} md={4} lg={3} key={item.id}>
+          <Grid item xs={12} sm={6} md={4} lg={3} key={item?.id}>
             <Box
               textAlign="center"
               sx={{
@@ -30,7 +32,7 @@ export default function AdvertisingSection() {
             >
               <Image
                 src={"/img/default-house.jpg"}
-                alt={item.Title}
+                alt={item?.Title}
                 width={220}
                 height={220}
                 objectFit="cover"
@@ -38,10 +40,10 @@ export default function AdvertisingSection() {
                 style={{ borderRadius: "6px" }}
               />
               <Box textAlign="start" px={2}>
-                <Typography fontSize="24px">{item.Title}</Typography>
-                <Typography fontSize="16px">{item.Location}</Typography>
-                <Typography fontSize="16px">{item.Price}</Typography>
-                <Typography fontSize="14px">{item.Description}</Typography>
+                <Typography fontSize="18px">{item?.Title}</Typography>
+                <Typography>{item?.Location}</Typography>
+                <Typography>{item?.Price}</Typography>
+                <Typography fontSize="14px">{item?.Description}</Typography>
               </Box>
             </Box>
           </Grid>
